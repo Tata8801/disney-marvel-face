@@ -10,8 +10,8 @@
     <style>
         body { font-family: 'Poppins', sans-serif; }
         @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), inset 0 0 15px rgba(59, 130, 246, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(147, 51, 234, 0.8), inset 0 0 25px rgba(147, 51, 234, 0.5); }
+            0%, 100% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4), inset 0 0 15px rgba(59, 130, 246, 0.2); }
+            50% { box-shadow: 0 0 45px rgba(236, 72, 153, 0.7), inset 0 0 25px rgba(236, 72, 153, 0.4); }
         }
         .glow-card {
             animation: pulse-glow 3s infinite ease-in-out;
@@ -34,13 +34,13 @@
 </head>
 <body class="bg-slate-950 text-white min-h-screen flex flex-col items-center justify-between p-4 selection:bg-pink-500 selection:text-white relative overflow-x-hidden">
 
-    <!-- Fondo con círculos de luz difuminados (Efecto moderno) -->
+    <!-- Fondo con luces difuminadas -->
     <div class="absolute top-0 -left-20 w-72 h-72 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-0 -right-20 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
     <!-- Encabezado -->
     <header class="text-center max-w-xl z-10 mt-4">
-        <span class="bg-gradient-to-r from-blue-500 to-pink-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">✨ Disney & Marvel Edition</span>
+        <span class="bg-gradient-to-r from-blue-500 to-pink-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">✨ Edición Especial Disney & Marvel</span>
         <h1 class="text-3xl sm:text-4xl font-extrabold mt-4 tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
             ¿Qué personaje eres en realidad?
         </h1>
@@ -50,7 +50,7 @@
     <!-- Contenedor Principal -->
     <main class="w-full max-w-sm my-6 flex flex-col items-center z-10">
         
-        <!-- Tarjeta de Cámara/Resultado -->
+        <!-- Tarjeta de Cámara / Resultado -->
         <div id="camera-container" class="glow-card relative w-full aspect-[3/4] bg-slate-900/90 rounded-3xl overflow-hidden border border-slate-700/50 shadow-2xl flex items-center justify-center backdrop-blur-md">
             
             <!-- Video de la Cámara -->
@@ -72,29 +72,29 @@
             </div>
 
             <!-- Estado de Análisis (Cargando) -->
-            <div id="analyzing-state" class="absolute inset-0 bg-slate-950/80 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center hidden">
+            <div id="analyzing-state" class="absolute inset-0 bg-slate-950/85 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center hidden">
                 <div class="relative w-24 h-24 mb-4">
                     <div class="absolute inset-0 rounded-full border-4 border-pink-500/30 animate-ping"></div>
                     <div class="absolute inset-0 rounded-full border-4 border-t-pink-500 border-r-blue-500 border-b-transparent border-l-transparent animate-spin"></div>
-                    <div class="absolute inset-0 flex items-center justify-center text-xl font-bold text-pink-400">AI</div>
+                    <div class="absolute inset-0 flex items-center justify-center text-xl font-bold text-pink-400">IA</div>
                 </div>
                 <p id="loading-text" class="text-sm font-semibold text-white animate-pulse">Analizando facciones biométricas...</p>
             </div>
 
             <!-- Resultado del Personaje -->
             <div id="result-overlay" class="absolute inset-0 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center hidden">
-                <span class="text-[10px] uppercase tracking-widest bg-pink-500/20 text-pink-400 px-3 py-1 rounded-full font-bold mb-3 border border-pink-500/30">✨ ¡Felicidades! Coincidencia exacta</span>
+                <span class="text-[10px] uppercase tracking-widest bg-pink-500/20 text-pink-400 px-3 py-1 rounded-full font-bold mb-3 border border-pink-500/30">✨ ¡Coincidencia exacta encontrada!</span>
                 
-                <!-- Imagen del Personaje con borde brillante -->
-                <div class="w-32 h-32 rounded-2xl bg-slate-800 border-2 border-pink-500/85 mb-4 overflow-hidden shadow-2xl shadow-pink-500/20 flex items-center justify-center relative group">
-                    <img id="character-img" src="" alt="Personaje" class="w-full h-full object-cover">
+                <!-- Icono / Avatar Animado del Personaje -->
+                <div id="character-avatar" class="w-28 h-28 rounded-2xl bg-gradient-to-tr from-purple-600/30 to-blue-600/30 border-2 border-pink-500/80 mb-4 shadow-2xl shadow-pink-500/30 flex items-center justify-center text-5xl">
+                    🦸‍♂️
                 </div>
                 
                 <h3 id="character-name" class="text-2xl font-extrabold text-white tracking-tight leading-snug">Nombre</h3>
                 <p id="character-universe" class="text-xs text-pink-400 font-semibold mb-2 uppercase tracking-wide">Universo</p>
                 <p id="character-desc" class="text-xs text-slate-300 max-w-xs leading-relaxed bg-slate-900/80 p-3 rounded-xl border border-slate-800">Descripción</p>
                 
-                <button onclick="resetApp()" class="mt-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-semibold py-2.5 px-6 rounded-xl transition-all shadow-lg shadow-blue-600/30 active:scale-95">
+                <button onclick="resetApp()" class="mt-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-semibold py-2.5 px-6 rounded-xl transition-all shadow-lg shadow-blue-600/30 active:scale-95 cursor-pointer">
                     🔄 Probar de nuevo
                 </button>
             </div>
@@ -113,45 +113,56 @@
         Creado con tecnología interactiva y diseño web moderno.
     </footer>
 
-    <!-- Lógica de JavaScript -->
+    <!-- Lógica de JavaScript con avatares garantizados -->
     <script>
-        // Enlaces directos y estables de imágenes de alta calidad
         const characters = [
             { 
                 name: "Iron Man (Tony Stark)", 
                 universe: "Marvel Cinematic Universe", 
                 desc: "Genio, multimillonario y filántropo. Tienes una mente brillante para resolver cualquier problema con estilo.", 
-                image: "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=500&auto=format&fit=crop&q=60" 
+                emoji: "🤖" 
+            },
+            { 
+                name: "Spider-Man (Peter Parker)", 
+                universe: "Marvel / Héroe Arácnido", 
+                desc: "Joven, carismático y con un gran sentido de la responsabilidad. Siempre listo para ayudar a los demás.", 
+                emoji: "🕷️" 
             },
             { 
                 name: "Loki Laufeyson", 
                 universe: "Marvel / Dios de las Mentiras", 
-                desc: "Astuto, carismático y amante del buen humor. Siempre vas un paso por delante de los demás.", 
-                image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500&auto=format&fit=crop&q=60" 
+                desc: "Astuto, ingenioso y amante del buen humor. Siempre vas un paso por delante de los demás.", 
+                emoji: "👑" 
             },
             { 
                 name: "Hades", 
                 universe: "Disney / Villano Legendario", 
                 desc: "Divertido, sarcástico y con una energía imparable cuando te propones alcanzar tus metas.", 
-                image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=60" 
+                emoji: "🔥" 
             },
             { 
                 name: "Mulan", 
                 universe: "Disney / Guerrera Legendaria", 
                 desc: "Valiente, decidida y dispuesta a romper todas las reglas para proteger a los tuyos.", 
-                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60" 
-            },
-            { 
-                name: "Doctor Strange", 
-                universe: "Marvel / Maestro de las Artes Místicas", 
-                desc: "Analítico, perfeccionista y con una gran capacidad intelectual para ver más allá de lo evidente.", 
-                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60" 
+                emoji: "⚔️" 
             },
             { 
                 name: "Maléfica", 
                 universe: "Disney / Reina Oscura", 
                 desc: "Elegante, imponente y con un carácter fuerte que transmite respeto a donde quiera que vas.", 
-                image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&auto=format&fit=crop&q=60" 
+                emoji: "🖤" 
+            },
+            { 
+                name: "Doctor Strange", 
+                universe: "Marvel / Maestro Místico", 
+                desc: "Analítico, perfeccionista y con una gran capacidad intelectual para ver más allá de lo evidente.", 
+                emoji: "✨" 
+            },
+            { 
+                name: "Elsa", 
+                universe: "Disney / Frozen", 
+                desc: "Poderosa, independiente y con una fuerza interior inigualable que deslumbra a todos.", 
+                emoji: "❄️" 
             }
         ];
 
@@ -169,7 +180,6 @@
             resultOverlay.classList.add('hidden');
 
             try {
-                // Solicitar cámara frontal del dispositivo
                 videoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
                 video.srcObject = videoStream;
                 
@@ -178,11 +188,9 @@
                 startBtn.disabled = true;
                 startBtn.classList.add('opacity-50', 'cursor-not-allowed');
                 
-                // Animación de escaneo activo
                 scanner.classList.remove('hidden');
                 analyzingState.classList.remove('hidden');
 
-                // Textos dinámicos simulando análisis de IA
                 setTimeout(() => { loadingText.innerText = "Mapeando geometría facial..."; }, 1200);
                 setTimeout(() => { loadingText.innerText = "Comparando con archivo de Disney & Marvel..."; }, 2600);
 
@@ -193,7 +201,7 @@
                 }, 4000);
 
             } catch (error) {
-                alert("No se pudo acceder a la cámara. Por favor, asegúrate de permitir el acceso en tu navegador.");
+                alert("No se pudo acceder a la cámara. Asegúrate de dar permisos en tu navegador.");
                 console.error(error);
                 resetApp();
             }
@@ -209,7 +217,7 @@
             const scanner = document.getElementById('scanner');
             const video = document.getElementById('video');
             const resultOverlay = document.getElementById('result-overlay');
-            const characterImg = document.getElementById('character-img');
+            const characterAvatar = document.getElementById('character-avatar');
 
             scanner.classList.add('hidden');
             video.classList.add('hidden');
@@ -219,7 +227,7 @@
             document.getElementById('character-name').innerText = randomChar.name;
             document.getElementById('character-universe').innerText = randomChar.universe;
             document.getElementById('character-desc').innerText = randomChar.desc;
-            characterImg.src = randomChar.image;
+            characterAvatar.innerText = randomChar.emoji;
 
             resultOverlay.classList.remove('hidden');
         }
@@ -229,14 +237,12 @@
             const video = document.getElementById('video');
             const placeholder = document.getElementById('placeholder');
             const startBtn = document.getElementById('start-btn');
-            const characterImg = document.getElementById('character-img');
             const analyzingState = document.getElementById('analyzing-state');
             
             stopCamera();
             resultOverlay.classList.add('hidden');
             analyzingState.classList.add('hidden');
             video.classList.add('hidden');
-            characterImg.src = "";
             placeholder.classList.remove('hidden');
             
             startBtn.disabled = false;
